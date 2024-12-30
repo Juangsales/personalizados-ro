@@ -630,67 +630,29 @@
         { 
             id: 'convencional', 
             name: 'Bolo Convencional',
-            description: 'Topo tradicional com acabamento em chantilly ou pasta americana',
-            image: "/api/placeholder/300/200",
+            description: 'Topo tradicional colorido com acabamento folha única',
+            image: "./simples.jpg",
             hasCustomDescription: true,
            
         },
         { 
             id: '3d', 
             name: 'Bolo com Topo 3D',
-            description: 'Topo personalizado em 3D com tema específico',
-            image: "/api/placeholder/300/200",
+            description: 'Topo personalizado em 3D',
+            image: "./flor 3d.jpg",
             hasCustomDescription: true,
            
         },
         { 
             id: 'outros', 
             name: 'Outro Estilo',
-            description: 'Personalize seu próprio topo do bolo',
-            image: "/api/placeholder/300/200",
+            description: 'Tem alguma ideia? Podemos ajudar, só escrever aqui.',
+            image: "./fitinha.jpg",
             hasCustomDescription: true,
             hasCustomInput: true
         }
-    ],
-        parameters: [ // Parâmetros para ajuste de ilustração
-            { id: 'radius', name: 'Raio', min: 10, max: 100, default: 50 },
-            { id: 'altura', name: 'Altura', min: 10, max: 100, default: 50 }
-        ]
+    ]
 };
-
-function updateParameter(paramId, value) {
-        state.data.parameters = state.data.parameters || {};
-        state.data.parameters[paramId] = value;
-
-        // Atualiza o valor exibido ao lado do controle deslizante
-        document.getElementById(`${paramId}-value`).textContent = value;
-
-        // Renderiza novamente a ilustração
-        const illustrationElement = document.getElementById('illustration');
-        if (illustrationElement) {
-            illustrationElement.innerHTML = renderIllustration();
-        }
-    }
-
-    function renderIllustration() {
-    const parameters = state.data.parameters || {};
-    return `
-        <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
-            <!-- Círculo representando o Aro -->
-            <circle cx="100" cy="100" 
-                    r="${parameters.radius || 50}" 
-                    fill="none" 
-                    stroke="black" stroke-width="2" />
-            <!-- Barra preta representando a Altura -->
-            <rect x="95" y="${200 - (parameters.altura || 50)}" 
-                  width="10" height="${parameters.altura || 50}" 
-                  fill="black" />
-        </svg>
-    `;
-}
-
-
-
 
 
 //Função dos botões de navegação
@@ -815,12 +777,6 @@ function updateCustomStyle(value) {
                           onchange="updateData('data.description', this.value)" 
                           placeholder="Descreva os detalhes do seu pedido...">${state.data.description || ''}</textarea>
             </div>
-            <div class="file-upload" onclick="document.getElementById('fileInput').click()">
-                <input type="file" id="fileInput" multiple 
-                       accept="image/*" onchange="handleFileUpload(this)">
-                <p>Clique ou arraste imagens de referência aqui</p>
-                <div class="file-preview" id="filePreview"></div>
-            </div>
         </div>`;
     break;
 
@@ -869,6 +825,7 @@ function updateCustomStyle(value) {
         <p><strong>Telefone (WhatsApp):</strong> ${state.data.phone || 'Não fornecido'}</p>
         <p><strong>E-mail:</strong> ${state.data.email || 'Não fornecido'}</p>
         <p><strong>Estilo:</strong> ${state.data.style || 'Não especificado'}</p>
+        <p><strong>Outros:</strong> ${state.data.customStyleDescription || ''}</p>
         <p><strong>Tamanho:</strong> Aro ${state.data.cakeSize?.aro || '-'} cm, Altura ${state.data.cakeSize?.altura || '-'} cm</p>
         <p><strong>Cor(es):</strong> ${customColors}</p>
         <p><strong>Data de Entrega:</strong> ${state.data.deliveryDate || 'Não especificada'}</p>
@@ -951,22 +908,7 @@ function updateCustomStyle(value) {
         }
     }
 
-  
 
-            function handleFileUpload(input) {
-            const preview = document.getElementById('filePreview');
-            preview.innerHTML = '';
-            
-            [...input.files].forEach(file => {
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                    preview.innerHTML += `
-                        <img src="${e.target.result}" alt="Preview">
-                    `;
-                };
-                reader.readAsDataURL(file);
-            });
-        }
     
             function updateCakeSize(type, value) {
                 state.data.cakeSize[type] = value;
@@ -1086,6 +1028,7 @@ function removeColor(color) {
 
         *Detalhes do Pedido:*
         Estilo: ${state.data.style || 'Não especificado'}
+        Outros: ${state.data.customStyleDescription || ''}
         Tamanho: Aro ${state.data.cakeSize?.aro || '-'} cm, Altura ${state.data.cakeSize?.altura || '-'} cm
         Cor(es): ${state.data.customColors?.length > 0 ? state.data.customColors.join(', ') : 'Nenhuma cor personalizada'}
         Data de Entrega: ${state.data.deliveryDate || 'Não especificada'}
