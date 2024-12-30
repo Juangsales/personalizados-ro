@@ -5,6 +5,386 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personalizados da Rô</title>
     <style>
+:root {
+    --primary: #e46879;
+    --primary-dark: #bf5063;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-300: #d1d5db;
+    --gray-500: #6b7280;
+    --gray-700: #374151;
+    --gray-900: #111827;
+    --success: #22c55e;
+    --danger: #ef4444;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #efaeb1;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    line-height: 1.5;
+}
+
+.wizard {
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    padding: 2rem;
+}
+
+/* PROGRESS BAR */
+.progress {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.progress__bar {
+    height: 0.25rem;
+    flex: 1;
+    background: var(--gray-200);
+    border-radius: 999px;
+    transition: background-color 0.3s ease;
+}
+
+.progress__bar--active {
+    background: var(--primary);
+}
+
+/* STEPS */
+.step {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.step--active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.step__title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    color: var(--gray-900);
+    margin-bottom: 1.5rem;
+}
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1rem;
+        }
+
+
+        .card {
+            background: white;
+            border: 2px solid var(--gray-200);
+            border-radius: 0.75rem;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .card:hover {
+            border-color: var(--primary);
+            background: var(--gray-100);
+        }
+
+        .card--selected {
+            border-color: var(--primary);
+            background: #eff6ff;
+        }
+
+        .card__image {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .card__title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .card__description {
+            font-size: 0.875rem;
+            color: var(--gray-500);
+            text-align: center;
+        }
+
+/* FORM ELEMENTS */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.form__group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form__label {
+    font-weight: 500;
+    color: var(--gray-700);
+}
+
+.form__input {
+    padding: 0.75rem;
+    border: 1px solid var(--gray-300);
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    transition: border-color 0.2s ease;
+}
+
+.form__input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.color-picker {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 0.5rem;
+}
+
+        .color-option {
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .color-option:hover {
+            transform: translateY(-2px);
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn--back {
+            color: var(--gray-700);
+            background: transparent;
+        }
+
+        .btn--back:hover {
+            color: var(--gray-900);
+        }
+
+        .btn--primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn--primary:hover {
+            background: var(--primary-dark);
+        }
+
+        .confirmation {
+            background: var(--gray-100);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+        }
+
+        .confirmation__item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .confirmation__label {
+            font-weight: 500;
+            color: var(--gray-700);
+        }
+
+        .confirmation__value {
+            color: var(--gray-900);
+        }
+
+        
+        .color-option {
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .color-option:hover {
+            transform: translateY(-2px);
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+
+        .confirmation {
+            background: var(--gray-100);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+        }
+
+        .confirmation__item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .confirmation__label {
+            font-weight: 500;
+            color: var(--gray-700);
+        }
+
+        .confirmation__value {
+            color: var(--gray-900);
+        }
+
+        .color-preview {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: box-shadow 0.2s ease;
+}
+
+.color-preview.added {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+        .cake-preview svg {
+            width: 100%;
+            height: auto;
+        }
+
+        .file-upload {
+            border: 2px dashed var(--gray-300);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            text-align: center;
+            margin: 1rem 0;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .file-upload:hover {
+            border-color: var(--primary);
+            background: var(--gray-100);
+        }
+
+        .file-upload input {
+            display: none;
+        }
+
+        .file-preview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .file-preview img {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-2px);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .gallery-item__overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 0.5rem;
+            text-align: center;
+        }
+
         :root {
             --primary: #2563eb;
             --primary-dark: #1d4ed8;
@@ -580,9 +960,267 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
+:root {
+    --primary: #e46879;
+    --primary-dark: #bf5063;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-300: #d1d5db;
+    --gray-500: #6b7280;
+    --gray-700: #374151;
+    --gray-900: #111827;
+    --success: #22c55e;
+    --danger: #ef4444;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #efaeb1;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    line-height: 1.5;
+}
+
+.wizard {
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    padding: 2rem;
+}
+
+/* PROGRESS BAR */
+.progress {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.progress__bar {
+    height: 0.25rem;
+    flex: 1;
+    background: var(--gray-200);
+    border-radius: 999px;
+    transition: background-color 0.3s ease;
+}
+
+.progress__bar--active {
+    background: var(--primary);
+}
+
+/* STEPS */
+.step {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.step--active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.step__title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    color: var(--gray-900);
+    margin-bottom: 1.5rem;
+}
+
+/* FORM ELEMENTS */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.form__group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form__label {
+    font-weight: 500;
+    color: var(--gray-700);
+}
+
+.form__input {
+    padding: 0.75rem;
+    border: 1px solid var(--gray-300);
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    transition: border-color 0.2s ease;
+}
+
+.form__input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+/* COLOR PICKER */
+.color-picker {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 0.5rem;
+}
+
+.color-preview-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.color-preview {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: box-shadow 0.2s ease;
+}
+
+.color-preview.added {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+input[type="color"] {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 0.5rem;
+    appearance: none;
+    cursor: pointer;
+}
+
+/* Estilo geral do container */
+#colorPickerContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Estilo do seletor de cor */
+.color-picker {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Estilo do botão "Adicionar Cor" */
+.form__button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.form__button:hover {
+    background-color: #45a049;
+}
+
+/* Estilo da explicação */
+.form__instructions {
+    font-size: 14px;
+    color: #666;
+    margin-top: 5px;
+}
+
+/* Estilo de input para as cores */
+.form__input {
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
 
 
-        
+/* Estilo da paleta de cores */
+.color-picker {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+
+.color-preview-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.color-preview {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Adicionar cor com animação */
+.color-preview.added {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* BUTTONS */
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn--back {
+    color: var(--gray-700);
+    background: transparent;
+}
+
+.btn--back:hover {
+    color: var(--gray-900);
+}
+
+.btn--primary {
+    background: var(--primary);
+    color: white;
+}
+
+.btn--primary:hover {
+    background: var(--primary-dark);
+}
+
     </style>
 </head>
 <body>
@@ -603,7 +1241,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Personalizados da Rô</title>
     </head>
-    <body>
+    
        
     
         <script>
@@ -620,6 +1258,9 @@
                     name: '',
                     phone: '',
                     date: '',
+                    email: '',
+                    deliveryDate: '',
+                    cakeThemeText: '', 
                     price: 0
                 }
             };
@@ -665,9 +1306,7 @@ function updateNavigation() {
             }
 
 
-function updateCustomStyle(value) {
-    state.data.customStyleDescription = value;
-}
+
 
             // Renderização dos passos
             function renderStep(step) {
@@ -738,7 +1377,7 @@ function updateCustomStyle(value) {
                 case 3: // Personalização de cor
     stepElement.innerHTML = `
 <h2 class="step__title">Personalização</h2>
-<label class="form__label">Escolha as cores (RGB)</label>
+<label class="form__label">Escolha as cores (Opcional)</label>
 <div id="colorPickerContainer" style="display: flex; flex-direction: column;">
     <div class="color-picker" style="display: flex; align-items: center; gap: 10px;">
         <input type="color" class="form__input" id="colorInput" onchange="updateColorPreview()">
@@ -761,21 +1400,21 @@ function updateCustomStyle(value) {
             <div class="form__group">
                 <label class="form__label">Data de Entrega</label>
                 <input type="date" class="form__input" 
-                       onchange="updateData('deliveryDate', this.value)" 
+                      oninput="updateData(this.value)"
                        value="${state.data.deliveryDate || ''}">
             </div>
             <div class="form__group">
                 <label class="form__label">Texto para o Tema do Bolo</label>
                 <input type="text" class="form__input" 
-                       onchange="updateData('cakeThemeText', this.value)" 
+                      oninput="updateTexto(this.value)"
                        placeholder="Insira o texto para o tema do bolo" 
                        value="${state.data.cakeThemeText || ''}">
             </div>
             <div class="form__group">
                 <label class="form__label">Descrição do Pedido</label>
                 <textarea class="form__input" rows="4" 
-                          onchange="updateData('data.description', this.value)" 
-                          placeholder="Descreva os detalhes do seu pedido...">${state.data.description || ''}</textarea>
+                          oninput="updateDescricao(this.value)" 
+                          placeholder="Descreva os detalhes do seu pedido...">${state.data.description}</textarea>
             </div>
         </div>`;
     break;
@@ -788,23 +1427,23 @@ function updateCustomStyle(value) {
             <div class="form__group">
                 <label class="form__label">Nome</label>
                 <input type="text" class="form__input" 
-                       onchange="updateData('name', this.value)" 
+                       oninput="updateNome(this.value)" 
                        placeholder="Digite seu nome completo" 
-                       value="${state.data.name || ''}">
+                       value="${state.data.name}">
             </div>
             <div class="form__group">
                 <label class="form__label">Telefone (WhatsApp)</label>
                 <input type="tel" class="form__input" 
-                       onchange="updateData('phone', this.value)" 
+                oninput="updatePhone(this.value)"
                        placeholder="Digite seu número de WhatsApp" 
-                       value="${state.data.phone || ''}">
+                       value="${state.data.phone}">
             </div>
             <div class="form__group">
                 <label class="form__label">E-mail</label>
                 <input type="email" class="form__input" 
-                       onchange="updateData('email', this.value)" 
+                      oninput="updateEmail(this.value)"
                        placeholder="Digite seu e-mail" 
-                       value="${state.data.email || ''}">
+                       value="${state.data.email}">
             </div>
         </div>
         
@@ -825,14 +1464,15 @@ function updateCustomStyle(value) {
         <p><strong>Telefone (WhatsApp):</strong> ${state.data.phone || 'Não fornecido'}</p>
         <p><strong>E-mail:</strong> ${state.data.email || 'Não fornecido'}</p>
         <p><strong>Estilo:</strong> ${state.data.style || 'Não especificado'}</p>
-        <p><strong>Outros:</strong> ${state.data.customStyleDescription || ''}</p>
+        <p> ${state.data.customStyleDescription || ''}</p>
         <p><strong>Tamanho:</strong> Aro ${state.data.cakeSize?.aro || '-'} cm, Altura ${state.data.cakeSize?.altura || '-'} cm</p>
-        <p><strong>Cor(es):</strong> ${customColors}</p>
+        <p><strong>Cor(es):</strong> ${state.data.customColors}</p>
         <p><strong>Data de Entrega:</strong> ${state.data.deliveryDate || 'Não especificada'}</p>
         <p><strong>Texto para o Tema do Bolo:</strong> ${state.data.cakeThemeText || 'Não especificado'}</p>
         <p><strong>Descrição:</strong> ${state.data.description || 'Não fornecida'}</p>
         <p><strong>Preço Estimado:</strong> R$ ${state.data.price?.toFixed(2) || '0.00'}</p>
-        <button class="btn btn--primary" onclick="submitOrder()">Confirmar Pedido</button>
+        <br>
+        <button class="btn btn--primary" style="float: right" onclick="submitOrder()">Confirmar Pedido</button>
     `;
     break;
 
@@ -843,11 +1483,9 @@ function updateCustomStyle(value) {
                 stepsContainer.appendChild(stepElement);
             }
 
-            function selectStyle(styleId) {
+function selectStyle(styleId) {
     state.data.style = styleId;
     renderStep(state.currentStep); // Apenas re-renderiza o step atual
-
- 
 
     // Se o estilo for 'outros', re-renderiza o passo para exibir o campo de descrição
     if (styleId === 'outros') {
@@ -856,9 +1494,6 @@ function updateCustomStyle(value) {
 }
     
             // Atualização da barra de progresso
-
-
-
             function updateProgress() {
                 const progressContainer = document.getElementById('progress');
                 progressContainer.innerHTML = '';
@@ -871,7 +1506,7 @@ function updateCustomStyle(value) {
             }
     
           
-            function handleNext() {
+    function handleNext() {
     let canAdvance = true;
 
     switch (state.currentStep) {
@@ -884,6 +1519,18 @@ function updateCustomStyle(value) {
         case 2: // Verificar tamanhos do bolo
             if (!state.data.cakeSize?.aro || !state.data.cakeSize?.altura) {
                 alert('Por favor, preencha o tamanho do bolo antes de continuar.');
+                canAdvance = false;
+            }
+            break;
+            case 4: // Verificar Tema e Data de entrega
+            if (!state.data.deliveryDate || !state.data.cakeThemeText) {
+                alert('Por favor, preencha tudo antes de continuar.');
+                canAdvance = false;
+            }
+            break;
+            case 5: // Verificar Dados pessoais
+            if (!state.data.name || !state.data.phone || !state.data.email) {
+                alert('Por favor, preencha seus dados antes de continuar.');
                 canAdvance = false;
             }
             break;
@@ -907,119 +1554,109 @@ function updateCustomStyle(value) {
             updateNavigation();
         }
     }
-
+    function updateCustomStyle(value) {
+    state.data.customStyleDescription = value;
+}
 
     
             function updateCakeSize(type, value) {
                 state.data.cakeSize[type] = value;
             }
-    
-// Atualiza a cor personalizada no estado
-function updateCustomColor(color) {
-    state.data.customColor = color;
-}
 
-// Função para adicionar um novo seletor de cor
-function addColorPicker() {
-    const container = document.getElementById('colorPickerContainer');
-    const colorPickerContainer = document.getElementById('selectedColors');
-    const colorInput = document.getElementById('colorInput').value;
+            function updateData(value) {
+                state.data.deliveryDate = value;
+            }
 
-    // Cria um novo elemento para a cor selecionada
-    const colorBox = document.createElement('div');
-    colorBox.style.backgroundColor = colorInput;
-    colorBox.style.width = '50px';
-    colorBox.style.height = '50px';
-    colorBox.style.margin = '5px';
-    colorBox.style.border = '1px solid #000';
-    colorBox.style.display = 'inline-block';
+            function updateTexto(value) {
+                state.data.cakeThemeText = value;
+            }
 
-    // Adiciona o novo elemento à lista de cores
-    colorPickerContainer.appendChild(colorBox);
+            function updateDescricao(value) {
+                state.data.description = value;
+            }
+            function updateNome(value) {
+                state.data.name = value;
+            }
+            function updatePhone(value) {
+                state.data.phone = value;
+            }
+            function updateEmail(value) {
+                state.data.email = value;
+            }
 
-    // Criar o contêiner de cor
-    const colorPickerDiv = document.createElement('div');
-    colorPickerDiv.className = 'color-picker';
 
-    // Criar o seletor de cor
-    
-    colorInput.type = 'color';
-    colorInput.onchange = updateCustomColors; // Atualiza a lista de cores selecionadas
-    
+            // Adicionar uma nova cor
+    function addColorPicker() {
+        const colorInput = document.getElementById('colorInput');
+        const colorValue = colorInput.value;
 
-    // Adicionar o seletor de cor ao contêiner
-    colorPickerDiv.appendChild(colorInput);
-    container.insertBefore(colorPickerDiv, document.getElementById('addColorButton')); // Coloca a nova cor acima do botão "Adicionar Cor"
-}
+        // Adicionar cor ao estado
+        if (!state.data.customColors) state.data.customColors = [];
+        state.data.customColors.push(colorValue);
 
-// Atualiza as cores selecionadas
-function updateCustomColors() {
-    const colorPickers = document.querySelectorAll('#colorPickerContainer .color-picker');
-    const colors = [];
-
-    colorPickers.forEach(picker => {
-        const input = picker.querySelector('input[type="color"]');
-        const selectedColor = input.value;
-
-        // Adicionar a cor à lista de cores selecionadas
-        colors.push(selectedColor);
-    });
-
-    // Atualizar o estado
-    state.data.customColors = colors;
-
-    // Atualizar a visualização das cores
-    updateColorPreviewList();
-}
-
-// Atualiza a lista de pré-visualização das cores
-function updateColorPreviewList() {
-    const selectedColorsContainer = document.getElementById('selectedColors');
-    selectedColorsContainer.innerHTML = ''; // Limpar as cores já exibidas
-
-    state.data.customColors.forEach(color => {
-        const colorPreview = document.createElement('div');
-        colorPreview.className = 'color-preview';
-        colorPreview.style.backgroundColor = color;
-
-        // Adicionar botão de remoção
-        const removeBtn = document.createElement('span');
-        removeBtn.className = 'remove';
-        removeBtn.innerHTML = '&times;';
-        removeBtn.onclick = () => removeColor(color);
-
-        // Adicionar a cor e o botão de remoção à lista
-        colorPreview.appendChild(removeBtn);
-        selectedColorsContainer.appendChild(colorPreview);
-    });
-}
-
-// Função para remover uma cor da seleção
-function removeColor(color) {
-    // Remover a cor da lista
-    const colorIndex = state.data.customColors.indexOf(color);
-    if (colorIndex !== -1) {
-        state.data.customColors.splice(colorIndex, 1);
+        // Atualizar visualização
+        updateColorPreviewList();
     }
 
-    // Atualizar a lista de cores exibidas
-    updateColorPreviewList();
+    // Atualizar visualização das cores
+    function updateColorPreviewList() {
+        const container = document.getElementById('selectedColors');
+        container.innerHTML = ''; // Limpar visualização anterior
+
+        state.data.customColors.forEach((color, index) => {
+            // Criar visualização de cada cor
+            const colorBox = document.createElement('div');
+            colorBox.style.backgroundColor = color;
+            colorBox.style.width = '50px';
+            colorBox.style.height = '50px';
+            colorBox.style.margin = '5px';
+            colorBox.style.border = '1px solid #000';
+            colorBox.style.display = 'inline-block';
+
+            // Adicionar botão de remoção
+            const removeButton = document.createElement('btn');
+            removeButton.textContent = '✖';
+            removeButton.style.marginLeft = '0px';
+            removeButton.style.marginRight = '10px';
+            removeButton.style.cursor = 'pointer';
+            removeButton.onclick = () => removeColor(index);
+
+            const colorContainer = document.createElement('div');
+            colorContainer.style.display = 'flex';
+            colorContainer.style.alignItems = 'center';
+            colorContainer.appendChild(colorBox);
+            colorContainer.appendChild(removeButton);
+
+            container.appendChild(colorContainer);
+        });
+    }
+
+    // Remover cor da lista
+    function removeColor(index) {
+        state.data.customColors.splice(index, 1); // Remover do estado
+        updateColorPreviewList(); // Atualizar visualização
+    }
+
+    function calculatePrice() {
+    const basePrice = 2;
+    const sizeFactor = parseInt(state.data.cakeSize.aro || 0) * parseInt(state.data.cakeSize.altura || 0) * 0.1;
+    let styleFactor = 0;
+
+    // Verifica se o estilo é "3d" ou "outros"
+    if (state.data.style === "3d" || state.data.style === "outros") {
+        styleFactor = 5;
+    }
+
+    // Calcula o preço final
+    state.data.price = basePrice + sizeFactor + styleFactor;
 }
 
-
-    
-            function calculatePrice() {
-        const basePrice = 50;
-        const sizeFactor = parseInt(state.data.cakeSize.aro || 0) * parseInt(state.data.cakeSize.altura || 0) * 0.1;
-        state.data.price = basePrice + sizeFactor;
-    }
     
     function submitOrder() {
-    const phone = "+5521981756362"; // Substitua pelo número para o qual deseja enviar
+    const phone = "+5521997148263"; // Substitua pelo número para o qual deseja enviar
     const message = encodeURIComponent(`
         *Pedido Confirmado!*
         
-        *Envie fotos de exemplo*
 
         *Dados Pessoais:*
         Nome: ${state.data.name || 'Não fornecido'}
@@ -1028,7 +1665,7 @@ function removeColor(color) {
 
         *Detalhes do Pedido:*
         Estilo: ${state.data.style || 'Não especificado'}
-        Outros: ${state.data.customStyleDescription || ''}
+        ${state.data.customStyleDescription || ''}
         Tamanho: Aro ${state.data.cakeSize?.aro || '-'} cm, Altura ${state.data.cakeSize?.altura || '-'} cm
         Cor(es): ${state.data.customColors?.length > 0 ? state.data.customColors.join(', ') : 'Nenhuma cor personalizada'}
         Data de Entrega: ${state.data.deliveryDate || 'Não especificada'}
